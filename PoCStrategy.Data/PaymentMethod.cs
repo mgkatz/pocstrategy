@@ -31,9 +31,9 @@
 		public decimal Percentage { get; set; }
 
 		/// <summary>
-		/// EN: Relationship with details of payments with fees.
+		/// EN: Relationship with details of payment plans.
 		/// ES: Relación con detalles de pagos en cuotas.
 		/// </summary>
-		public PaymentFeesDetail[] Fees { get; set; }
+		public PaymentPlan[] PaymentPlans { get; set; }
 	}
 }

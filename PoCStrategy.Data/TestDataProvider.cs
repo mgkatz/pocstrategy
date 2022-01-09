@@ -49,19 +49,19 @@ namespace PoCStrategy.Data
 			new PaymentMethod
 			{
 				Id = 6,
-				Name = "Credit Card with Fees",
+				Name = "Credit Card with Payments",
 				TypeOfPayment = PaymentMethodType.CreditCard,
-				Fees = new PaymentFeesDetail[]
+				PaymentPlans = new PaymentPlan[]
 				{
-					new PaymentFeesDetail { CardCompany = CardCompany.VICARD, NumberOfFees = 3, Percentage = 0 },
-					new PaymentFeesDetail { CardCompany = CardCompany.VICARD, NumberOfFees = 6, Percentage = 0 },
-					new PaymentFeesDetail { CardCompany = CardCompany.VICARD, NumberOfFees = 12, Percentage = 10 },
-					new PaymentFeesDetail { CardCompany = CardCompany.VICARD, NumberOfFees = 18, Percentage = 20 },
-					new PaymentFeesDetail { CardCompany = CardCompany.ACARD, NumberOfFees = 3, Percentage = 7 },
-					new PaymentFeesDetail { CardCompany = CardCompany.ACARD, NumberOfFees = 6, Percentage = 12 },
-					new PaymentFeesDetail { CardCompany = CardCompany.ACARD, NumberOfFees = 12, Percentage = 18 },
-					new PaymentFeesDetail { CardCompany = CardCompany.MYCARD, NumberOfFees = 3, Percentage = 0 },
-					new PaymentFeesDetail { CardCompany = CardCompany.MYCARD, NumberOfFees = 6, Percentage = 0 },
+					new PaymentPlan { CardCompany = CardCompany.VICARD, NumberOfPayments = 3, Percentage = 0 },
+					new PaymentPlan { CardCompany = CardCompany.VICARD, NumberOfPayments = 6, Percentage = 0 },
+					new PaymentPlan { CardCompany = CardCompany.VICARD, NumberOfPayments = 12, Percentage = 10 },
+					new PaymentPlan { CardCompany = CardCompany.VICARD, NumberOfPayments = 18, Percentage = 20 },
+					new PaymentPlan { CardCompany = CardCompany.ACARD, NumberOfPayments = 3, Percentage = 7 },
+					new PaymentPlan { CardCompany = CardCompany.ACARD, NumberOfPayments = 6, Percentage = 12 },
+					new PaymentPlan { CardCompany = CardCompany.ACARD, NumberOfPayments = 12, Percentage = 18 },
+					new PaymentPlan { CardCompany = CardCompany.MYCARD, NumberOfPayments = 3, Percentage = 0 },
+					new PaymentPlan { CardCompany = CardCompany.MYCARD, NumberOfPayments = 6, Percentage = 0 },
 				}
 			}
 		};

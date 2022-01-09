@@ -36,22 +36,22 @@ namespace PoCStrategy.Business.PriceStrategies
 			// ES: Obtenemos la información de pago a través de un mock que retorna datos simulando lo que haría la capa de datos.
 			PaymentMethod paymentMethod = TestDataProvider.GetPaymentMethodInfo(paymentInfo.PaymentMethodId);
 
-			// EN: If there is no fees plan in the information provided by the data layer and, using an extension method for the application of percentages, the final price is calculated and returned based on the original price and the percentage indicated by the information obtained. of the data layer.
+			// EN: If there isn't any payments plan in the information provided by the data layer and, using an extension method for the application of percentages, the final price is calculated and returned based on the original price and the percentage indicated by the information obtained. of the data layer.
 			// ES: Si no hay plan de cuotas en la información que nos brinda la capa de datos y, usando un método de extensión para la aplicación de porcentajes, se calcula y se retorna el precio final basados en el precio original y el porcentaje que indica la información obtenida de la capa de datos.
-			if (paymentMethod.Fees == null)
+			if (paymentMethod.PaymentPlans == null)
 				return paymentInfo.Price.ApplyPercentage(paymentMethod.Percentage);
 
-			// EN: Information on the fees plan to apply is obtained.
+			// EN: Information on the payments plan to apply is obtained.
 			// ES: Se obtiene la información sobre el plan de cuotas a aplicar.
-			PaymentFeesDetail paymentFeesDetail = paymentMethod
-				.Fees
-				.SingleOrDefault(f => f.CardCompany == paymentInfo.CardCompany && f.NumberOfFees == paymentInfo.NumberOfFees);
+			PaymentPlan paymentPlan = paymentMethod
+				.PaymentPlans
+				.SingleOrDefault(f => f.CardCompany == paymentInfo.CardCompany && f.NumberOfPayments == paymentInfo.NumberOfPayments);
 
-			// EN: If there are no details regarding the fees plan chosen for the indicated credit card, an error will be returned. Otherwise, using an extension method for applying percentages, the final price is calculated and returned based on the original price and the percentage indicated by the information obtained from the data layer.
+			// EN: If there are no details regarding the payment plan chosen for the indicated credit card, an error will be returned. Otherwise, using an extension method for applying percentages, the final price is calculated and returned based on the original price and the percentage indicated by the information obtained from the data layer.
 			// ES: Si no hay detalles respecto al plan de cuotas elegido para la tarjeta de crédito indicada se retornará un error. De lo contrario, usando un método de extensión para la aplicación de porcentajes, se calcula y se retorna el precio final basados en el precio original y el porcentaje que indica la información obtenida de la capa de datos.
-			return paymentFeesDetail == null
-                ? throw new Exception($"A payment in {paymentInfo.NumberOfFees} fees with {paymentInfo.CardCompany} credit card is not possible because the card is not providing that plan.")
-				: paymentInfo.Price.ApplyPercentage(paymentFeesDetail.Percentage);
+			return paymentPlan == null
+                ? throw new Exception($"A plan in {paymentInfo.NumberOfPayments} payments with {paymentInfo.CardCompany} credit card is not possible because the card is not providing that plan.")
+				: paymentInfo.Price.ApplyPercentage(paymentPlan.Percentage);
 		}
 	}
 }

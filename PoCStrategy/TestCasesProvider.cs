@@ -17,21 +17,21 @@ namespace PoCStrategy
 		public static IDictionary<string, PaymentInfoDto> PaymentInfoTestCases =
 			new Dictionary<string, PaymentInfoDto>
 			{
-				{ "Price For Cash With List Price", GetPriceForCashWithListPrice() },
-				{ "Price For Cash With Discount", GetPriceForCashWithDiscount() },
-				{ "Price For DebitCard With List Price", GetPriceForDebitCardWithListPrice() },
-				{ "Price For CreditCard With List Price In One Payment", GetPriceForCreditCardWithListPriceInOnePayment() },
-				{ "Price For CreditCard With Extra Charge In One Payment", GetPriceForCreditCardWithExtraChargeInOnePayment() },
-				{ $"Price For CreditCard {nameof(CardCompany.VICARD)} With 3 Fees", GetPriceForCreditCardViCardWith3Fees() },
-				{ $"Price For CreditCard {nameof(CardCompany.VICARD)} With 6 Fees", GetPriceForCreditCardViCardWith6Fees() },
-				{ $"Price For CreditCard {nameof(CardCompany.VICARD)} With 12 Fees", GetPriceForCreditCardViCardWith12Fees() },
-				{ $"Price For CreditCard {nameof(CardCompany.VICARD)} With 18 Fees", GetPriceForCreditCardViCardWith18Fees() },
-				{ $"Price For CreditCard {nameof(CardCompany.ACARD)} With 3 Fees", GetPriceForCreditCardAcardWith3Fees() },
-				{ $"Price For CreditCard {nameof(CardCompany.ACARD)} With 6 Fees", GetPriceForCreditCardAcardWith6Fees() },
-				{ $"Price For CreditCard {nameof(CardCompany.ACARD)} With 12 Fees", GetPriceForCreditCardAcardWith12Fees() },
-				{ $"Price For CreditCard {nameof(CardCompany.MYCARD)} With 3 Fees", GetPriceForCreditCardMyCardWith3Fees() },
-				{ $"Price For CreditCard {nameof(CardCompany.MYCARD)} With 6 Fees", GetPriceForCreditCardMyCardWith6Fees() },
-				{ "Price For CreditCard No Existing Plan", GetPriceForCreditCardNoExistingPlan() }
+				{ "Price for cash with list price", GetPriceForCashWithListPrice() },
+				{ "Price for cash with discount", GetPriceForCashWithDiscount() },
+				{ "Price for debit card with list price", GetPriceForDebitCardWithListPrice() },
+				{ "Price for credit card with list price in one payment", GetPriceForCreditCardWithListPriceInOnePayment() },
+				{ "Price for credit card with extra charge in one payment", GetPriceForCreditCardWithExtraChargeInOnePayment() },
+				{ $"Price for credit card {nameof(CardCompany.VICARD)} with 3 payments", GetPriceForCreditCardViCardWith3Payments() },
+				{ $"Price for credit card {nameof(CardCompany.VICARD)} with 6 payments", GetPriceForCreditCardViCardWith6Payments() },
+				{ $"Price for credit card {nameof(CardCompany.VICARD)} with 12 payments", GetPriceForCreditCardViCardWith12Payments() },
+				{ $"Price for credit card {nameof(CardCompany.VICARD)} with 18 payments", GetPriceForCreditCardViCardWith18Payments() },
+				{ $"Price for credit card {nameof(CardCompany.ACARD)} with 3 payments", GetPriceForCreditCardAcardWith3Payments() },
+				{ $"Price for credit card {nameof(CardCompany.ACARD)} with 6 payments", GetPriceForCreditCardAcardWith6Payments() },
+				{ $"Price for credit card {nameof(CardCompany.ACARD)} with 12 payments", GetPriceForCreditCardAcardWith12Payments() },
+				{ $"Price for credit card {nameof(CardCompany.MYCARD)} with 3 payments", GetPriceForCreditCardMyCardWith3Payments() },
+				{ $"Price for credit card {nameof(CardCompany.MYCARD)} with 6 payments", GetPriceForCreditCardMyCardWith6Payments() },
+				{ "Price for credit card with no existing plan", GetPriceForCreditCardNoExistingPlan() }
 			};
 
 		/// <summary>
@@ -103,7 +103,7 @@ namespace PoCStrategy
 				PaymentMethodId = 4,
 				TypeOfPayment = PaymentMethodType.CreditCard,
 				Price = 1000.00M,
-				NumberOfFees = 1,
+				NumberOfPayments = 1,
 				CardCompany = CardCompany.VICARD
 			};
 		}
@@ -123,187 +123,187 @@ namespace PoCStrategy
 				PaymentMethodId = 5,
 				TypeOfPayment = PaymentMethodType.CreditCard,
 				Price = 1000.00M,
-				NumberOfFees = 1,
+				NumberOfPayments = 1,
 				CardCompany = CardCompany.VICARD
 			};
 		}
 
 		/// <summary>
-		/// EN: Test case - You must return the final price when you choose the VICARD credit card with payments in 3 fees.
+		/// EN: Test case - You must return the final price when you choose the VICARD credit card with payments in 3 payments.
 		/// ES: Caso de prueba - Debe retornar el precio final cuando se elige la tarjeta de crédito VICARD con pagos en 3 cuotas.
 		/// </summary>
 		/// <returns>
 		/// EN: The payment information.
 		/// ES: La información de pago.
 		/// </returns>
-		private static PaymentInfoDto GetPriceForCreditCardViCardWith3Fees()
+		private static PaymentInfoDto GetPriceForCreditCardViCardWith3Payments()
 		{
 			return new PaymentInfoDto
 			{
 				PaymentMethodId = 6,
 				TypeOfPayment = PaymentMethodType.CreditCard,
 				Price = 1000.00M,
-				NumberOfFees = 3,
+				NumberOfPayments = 3,
 				CardCompany = CardCompany.VICARD
 			};
 		}
 
 		/// <summary>
-		/// EN: Test case - You must return the final price when you choose the VICARD credit card with payments in 6 fees.
+		/// EN: Test case - You must return the final price when you choose the VICARD credit card with payments in 6 payments.
 		/// ES: Caso de prueba - Debe retornar el precio final cuando se elige la tarjeta de crédito VICARD con pagos en 6 cuotas.
 		/// </summary>
 		/// <returns>
 		/// EN: The payment information.
 		/// ES: La información de pago.
 		/// </returns>
-		private static PaymentInfoDto GetPriceForCreditCardViCardWith6Fees()
+		private static PaymentInfoDto GetPriceForCreditCardViCardWith6Payments()
 		{
 			return new PaymentInfoDto
 			{
 				PaymentMethodId = 6,
 				TypeOfPayment = PaymentMethodType.CreditCard,
 				Price = 1000.00M,
-				NumberOfFees = 6,
+				NumberOfPayments = 6,
 				CardCompany = CardCompany.VICARD
 			};
 		}
 
 		/// <summary>
-		/// EN: Test case - You must return the final price when you choose the VICARD credit card with payments in 12 fees.
+		/// EN: Test case - You must return the final price when you choose the VICARD credit card with payments in 12 payments.
 		/// ES: Caso de prueba - Debe retornar el precio final cuando se elige la tarjeta de crédito VICARD con pagos en 12 cuotas.
 		/// </summary>
 		/// <returns>
 		/// EN: The payment information.
 		/// ES: La información de pago.
 		/// </returns>
-		private static PaymentInfoDto GetPriceForCreditCardViCardWith12Fees()
+		private static PaymentInfoDto GetPriceForCreditCardViCardWith12Payments()
 		{
 			return new PaymentInfoDto
 			{
 				PaymentMethodId = 6,
 				TypeOfPayment = PaymentMethodType.CreditCard,
 				Price = 1000.00M,
-				NumberOfFees = 12,
+				NumberOfPayments = 12,
 				CardCompany = CardCompany.VICARD
 			};
 		}
 
 		/// <summary>
-		/// EN: Test case - You must return the final price when you choose the VICARD credit card with payments in 18 fees.
+		/// EN: Test case - You must return the final price when you choose the VICARD credit card with payments in 18 payments.
 		/// ES: Caso de prueba - Debe retornar el precio final cuando se elige la tarjeta de crédito VICARD con pagos en 18 cuotas.
 		/// </summary>
 		/// <returns>
 		/// EN: The payment information.
 		/// ES: La información de pago.
 		/// </returns>
-		private static PaymentInfoDto GetPriceForCreditCardViCardWith18Fees()
+		private static PaymentInfoDto GetPriceForCreditCardViCardWith18Payments()
 		{
 			return new PaymentInfoDto
 			{
 				PaymentMethodId = 6,
 				TypeOfPayment = PaymentMethodType.CreditCard,
 				Price = 1000.00M,
-				NumberOfFees = 18,
+				NumberOfPayments = 18,
 				CardCompany = CardCompany.VICARD
 			};
 		}
 
 		/// <summary>
-		/// EN: Test case - You must return the final price when you choose the ACARD credit card with payments in 3 fees.
+		/// EN: Test case - You must return the final price when you choose the ACARD credit card with payments in 3 payments.
 		/// ES: Caso de prueba - Debe retornar el precio final cuando se elige la tarjeta de crédito ACARD con pagos en 3 cuotas.
 		/// </summary>
 		/// <returns>
 		/// EN: The payment information.
 		/// ES: La información de pago.
 		/// </returns>
-		private static PaymentInfoDto GetPriceForCreditCardAcardWith3Fees()
+		private static PaymentInfoDto GetPriceForCreditCardAcardWith3Payments()
 		{
 			return new PaymentInfoDto
 			{
 				PaymentMethodId = 6,
 				TypeOfPayment = PaymentMethodType.CreditCard,
 				Price = 1000.00M,
-				NumberOfFees = 3,
+				NumberOfPayments = 3,
 				CardCompany = CardCompany.ACARD
 			};
 		}
 
 		/// <summary>
-		/// EN: Test case - You must return the final price when you choose the ACARD credit card with payments in 6 fees.
+		/// EN: Test case - You must return the final price when you choose the ACARD credit card with payments in 6 payments.
 		/// ES: Caso de prueba - Debe retornar el precio final cuando se elige la tarjeta de crédito ACARD con pagos en 6 cuotas.
 		/// </summary>
 		/// <returns>
 		/// EN: The payment information.
 		/// ES: La información de pago.
 		/// </returns>
-		private static PaymentInfoDto GetPriceForCreditCardAcardWith6Fees()
+		private static PaymentInfoDto GetPriceForCreditCardAcardWith6Payments()
 		{
 			return new PaymentInfoDto
 			{
 				PaymentMethodId = 6,
 				TypeOfPayment = PaymentMethodType.CreditCard,
 				Price = 1000.00M,
-				NumberOfFees = 6,
+				NumberOfPayments = 6,
 				CardCompany = CardCompany.ACARD
 			};
 		}
 
 		/// <summary>
-		/// EN: Test case - You must return the final price when you choose the ACARD credit card with payments in 12 fees.
+		/// EN: Test case - You must return the final price when you choose the ACARD credit card with payments in 12 payments.
 		/// ES: Caso de prueba - Debe retornar el precio final cuando se elige la tarjeta de crédito ACARD con pagos en 12 cuotas.
 		/// </summary>
 		/// <returns>
 		/// EN: The payment information.
 		/// ES: La información de pago.
 		/// </returns>
-		private static PaymentInfoDto GetPriceForCreditCardAcardWith12Fees()
+		private static PaymentInfoDto GetPriceForCreditCardAcardWith12Payments()
 		{
 			return new PaymentInfoDto
 			{
 				PaymentMethodId = 6,
 				TypeOfPayment = PaymentMethodType.CreditCard,
 				Price = 1000.00M,
-				NumberOfFees = 12,
+				NumberOfPayments = 12,
 				CardCompany = CardCompany.ACARD
 			};
 		}
 
 		/// <summary>
-		/// EN: Test case - You must return the final price when you choose the MYCARD credit card with payments in 3 fees.
+		/// EN: Test case - You must return the final price when you choose the MYCARD credit card with payments in 3 payments.
 		/// ES: Caso de prueba - Debe retornar el precio final cuando se elige la tarjeta de crédito MYCARD con pagos en 3 cuotas.
 		/// </summary>
 		/// <returns>
 		/// EN: The payment information.
 		/// ES: La información de pago.
 		/// </returns>
-		private static PaymentInfoDto GetPriceForCreditCardMyCardWith3Fees()
+		private static PaymentInfoDto GetPriceForCreditCardMyCardWith3Payments()
 		{
 			return new PaymentInfoDto
 			{
 				PaymentMethodId = 6,
 				TypeOfPayment = PaymentMethodType.CreditCard,
 				Price = 1000.00M,
-				NumberOfFees = 3,
+				NumberOfPayments = 3,
 				CardCompany = CardCompany.MYCARD
 			};
 		}
 
 		/// <summary>
-		/// EN: Test case - You must return the final price when you choose the MYCARD credit card with payments in 6 fees.
+		/// EN: Test case - You must return the final price when you choose the MYCARD credit card with payments in 6 payments.
 		/// ES: Caso de prueba - Debe retornar el precio final cuando se elige la tarjeta de crédito MYCARD con pagos en 6 cuotas.
 		/// </summary>
 		/// <returns>
 		/// EN: The payment information.
 		/// ES: La información de pago.
 		/// </returns>
-		private static PaymentInfoDto GetPriceForCreditCardMyCardWith6Fees()
+		private static PaymentInfoDto GetPriceForCreditCardMyCardWith6Payments()
 		{
 			return new PaymentInfoDto
 			{
 				PaymentMethodId = 6,
 				TypeOfPayment = PaymentMethodType.CreditCard,
 				Price = 1000.00M,
-				NumberOfFees = 6,
+				NumberOfPayments = 6,
 				CardCompany = CardCompany.MYCARD
 			};
 		}
@@ -323,7 +323,7 @@ namespace PoCStrategy
 				PaymentMethodId = 6,
 				TypeOfPayment = PaymentMethodType.CreditCard,
 				Price = 1000.00M,
-				NumberOfFees = 12,
+				NumberOfPayments = 12,
 				CardCompany = CardCompany.MYCARD
 			};
 		}

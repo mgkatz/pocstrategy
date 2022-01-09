@@ -46,11 +46,11 @@ namespace PoCStrategy
 
 					// EN: The name of each of the fields that will be reported as a result is displayed on the console.
 					// ES: Se muestra en la consola el nombre de cada uno de los campos que se informarán como resultado.
-					Console.WriteLine("Payment Type,Card Company,Original Price,Final Price,Number of Fees");
+					Console.WriteLine("Payment Type,Card Company,Original Price,Final Price,Number of Payments");
 
 					// EN: The value corresponding to the fields indicated previously is displayed on the console.
 					// ES: Se muestra en la consola el valor correspondiente a los campos indicados previamente.
-					Console.WriteLine($"{testCase.Value.TypeOfPayment},{testCase.Value.CardCompany.ToString() ?? string.Empty},{originalPrice},{finalPrice},{testCase.Value.NumberOfFees}");
+					Console.WriteLine($"{testCase.Value.TypeOfPayment},{testCase.Value.CardCompany.ToString() ?? string.Empty},{originalPrice},{finalPrice},{testCase.Value.NumberOfPayments}");
 
 					// EN: A couple of empty lines are printed on the console in order to separate each test case.
 					// ES: Se imprimen un par de líneas vacías en la consola a fin de separar cada caso de prueba.

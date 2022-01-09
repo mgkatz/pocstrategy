@@ -21,10 +21,10 @@ namespace PoCStrategy.Business.Models
 		public PaymentMethodType TypeOfPayment { get; set; }
 
 		/// <summary>
-		/// EN: Number of fees.
+		/// EN: Number of payments.
 		/// ES: Número de cuotas.
 		/// </summary>
-		public int NumberOfFees { get; set; }
+		public int NumberOfPayments { get; set; }
 
 		/// <summary>
 		/// EN: Original price.
