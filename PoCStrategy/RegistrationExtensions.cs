@@ -47,10 +47,9 @@ namespace PoCStrategy
 			{
 				// EN: If the service is inside the dictionary, the corresponding instance is obtained from the service provider and it is returned by doing the corresponding cast. Otherwise, an error is returned.
 				// ES: Si el servicio está dentro del diccionario se obtiene del proveedor de servicios la instancia correspondiente y se retorna haciendo el casteo correspondiente. De lo contrario, se retorna un error.
-				if (servicesToRegister.ContainsKey(key))
-					return provider.GetRequiredService(servicesToRegister[key]) as T;
-				else
-					throw new Exception($"The service {key} could not be found or registered.");
+				return servicesToRegister.ContainsKey(key)
+					? provider.GetRequiredService(servicesToRegister[key]) as T
+                    : throw new Exception($"The service {key} could not be found or registered.");
 			});
 		}
 	}
