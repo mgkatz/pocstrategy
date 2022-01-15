@@ -24,43 +24,44 @@ namespace PoCStrategy
 			// ES: Se obtiene el contexto que administrará las estrategias. Regularmente esto se inyectaría en el constructor de una clase pero para los efectos prácticos de esta prueba de concepto se obtiene directamente.
 			IPriceContext priceContext = _serviceProvider.GetService<IPriceContext>();
 
-			// EN: An attempt will be made to process each of the cases. In the event that one of them fails, a message will be included in the console.
-			// ES: Se intentará procesar cada uno de los casos. En caso que que alguno falle se incluirá un mensaje en la consola.
-			try
+			// EN: For each of the test cases, the context will be asked to calculate the final price and the information will be displayed on the console.
+			// ES: Por cada uno de los casos de test se le pedirá al contexto que calcule el precio final y se mostrará la información en la consola.
+			foreach (var testCase in TestCasesProvider.PaymentInfoTestCases)
 			{
-				// EN: For each of the test cases, the context will be asked to calculate the final price and the information will be displayed on the console.
-				// ES: Por cada uno de los casos de test se le pedirá al contexto que calcule el precio final y se mostrará la información en la consola.
-				foreach (var testCase in TestCasesProvider.PaymentInfoTestCases)
-				{
-					// EN: The price of the test case is saved in a variable.
-					// ES: Se guarda en una variable el precio del caso de prueba.
-					int originalPrice = (int)testCase.Value.Price;
+				// EN: The price of the test case is saved in a variable.
+				// ES: Se guarda en una variable el precio del caso de prueba.
+				int originalPrice = (int)testCase.Value.Price;
+				int finalPrice = 0;
 
+				// EN: The name of the test case is displayed on the console as a title.
+				// ES: Se muestra en la consola el nombre del caso de prueba a modo de título.
+				Console.WriteLine($"Test Case - {testCase.Key}");
+
+				// EN: The name of each of the fields that will be reported as a result is displayed on the console.
+				// ES: Se muestra en la consola el nombre de cada uno de los campos que se informarán como resultado.
+				Console.WriteLine("Payment Type,Card Company,Original Price,Final Price,Number of Payments");
+
+				// EN: An attempt will be made to process each of the cases. In the event that one of them fails, a message will be included in the console.
+				// ES: Se intentará procesar cada uno de los casos. En caso que que alguno falle se incluirá un mensaje en la consola.
+				try
+				{
 					// EN: The context is asked to calculate the price and the necessary information is passed to it.
 					// ES: Se le pide al contexto que calcule el precio y se le pasa la información necesaria.
-					int finalPrice = (int)priceContext.CalculatePrice(testCase.Value);
-
-					// EN: The name of the test case is displayed on the console as a title.
-					// ES: Se muestra en la consola el nombre del caso de prueba a modo de título.
-					Console.WriteLine($"Test Case - {testCase.Key}");
-
-					// EN: The name of each of the fields that will be reported as a result is displayed on the console.
-					// ES: Se muestra en la consola el nombre de cada uno de los campos que se informarán como resultado.
-					Console.WriteLine("Payment Type,Card Company,Original Price,Final Price,Number of Payments");
+					finalPrice = (int)priceContext.CalculatePrice(testCase.Value);
 
 					// EN: The value corresponding to the fields indicated previously is displayed on the console.
 					// ES: Se muestra en la consola el valor correspondiente a los campos indicados previamente.
 					Console.WriteLine($"{testCase.Value.TypeOfPayment},{testCase.Value.CardCompany.ToString() ?? string.Empty},{originalPrice},{finalPrice},{testCase.Value.NumberOfPayments}");
-
-					// EN: A couple of empty lines are printed on the console in order to separate each test case.
-					// ES: Se imprimen un par de líneas vacías en la consola a fin de separar cada caso de prueba.
-					Console.WriteLine(string.Empty);
-					Console.WriteLine(string.Empty);
 				}
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine($"An error happened when calculating final price: {ex.Message}");
+				catch (Exception ex)
+				{
+					Console.WriteLine($"An error happened when calculating final price: {ex.Message}");
+				}
+
+				// EN: A couple of empty lines are printed on the console in order to separate each test case.
+				// ES: Se imprimen un par de líneas vacías en la consola a fin de separar cada caso de prueba.
+				Console.WriteLine(string.Empty);
+				Console.WriteLine(string.Empty);
 			}
 
 			// EN: Resources are disposed.
