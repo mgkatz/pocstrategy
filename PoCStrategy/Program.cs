@@ -107,7 +107,7 @@ namespace PoCStrategy
 
 			// EN: Register the strategies using a key dictionary to access them optimally and on demand.
 			// ES: Se registran las estrategias usando un diccionario de claves para acceder a ellas de una manera óptima y a pedido.
-			collection.AddKeyedServices<string, IPriceStrategy>(priceStrategies);
+			collection.AddKeyedServices<IPriceStrategy, string>(priceStrategies);
 
 			// EN: Creates a service provider containing the items from the service collection provided.
 			// ES: Se crea un proveedor de servicios que contiene los elementos de la colección de servicios proporcionada.
